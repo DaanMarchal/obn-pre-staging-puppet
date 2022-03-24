@@ -2,8 +2,9 @@
 
 BASE_DIR="/etc/puppet/obn-pre-staging-puppet"
 
-apt update
-apt install -y git-core make sudo
+sudo apt update
+sudo apt install -y git-core
+sudo apt install -y make
 mkdir ${BASE_DIR}
 cd ${BASE_DIR}
 sudo wget https://github.com/DaanMarchal/obn-pre-staging-puppet/blob/master/obn-pre-staging-puppet.zip
