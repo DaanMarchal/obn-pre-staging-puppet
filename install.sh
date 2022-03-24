@@ -3,8 +3,7 @@
 BASE_DIR="/etc/puppet/obn-pre-staging-puppet"
 
 sudo apt update
-sudo apt install -y git-core
-sudo apt install -y make
+sudo apt install -y git-core make unzip
 mkdir ${BASE_DIR}
 cd ${BASE_DIR}
 sudo wget https://github.com/DaanMarchal/obn-pre-staging-puppet/blob/master/obn-pre-staging-puppet.zip
@@ -14,6 +13,6 @@ sudo wget https://apt.puppet.com/puppet7-release-focal.deb
 sudo dpkg -i puppet7-release-focal.deb
 
 sudo apt update
-sudo apt install puppet-agent
+sudo apt install -y puppet-agent
 
 sudo /opt/puppetlabs/bin/puppet apply --modulepath modules/ manifests/site.pp
