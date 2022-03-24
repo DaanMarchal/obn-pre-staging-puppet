@@ -6,8 +6,8 @@ apt update
 apt install wget git-core make sudo
 mkdir ${BASE_DIR}
 cd ${BASE_DIR}
-# wget zip
-# unzip
+sudo wget https://github.com/DaanMarchal/obn-pre-staging-puppet/blob/master/obn-pre-staging-puppet.zip
+unzip obn-pre-staging-puppet.zip
 
 sudo wget https://apt.puppet.com/puppet7-release-focal.deb
 sudo dpkg -i puppet7-release-focal.deb
