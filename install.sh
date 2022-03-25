@@ -3,7 +3,7 @@
 BASE_DIR="/etc/puppet/obn-pre-staging-puppet"
 
 sudo apt update
-sudo apt install -y git-core make
+sudo apt install -y git-core make net-tools
 sudo apt install -y unzip
 mkdir -p ${BASE_DIR}
 cd ${BASE_DIR}
