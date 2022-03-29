@@ -21,4 +21,15 @@ sudo apt update
 sudo apt install -y puppet-agent
 sudo apt install -y python3.10 python3.10-venv
 
+# gather login creds
+echo "Login to obn-pre-staging application:"
+read -p 'Username: ' uservar
+read -sp 'Password: ' passvar
+echo
+# store creds in hiera
+sed -i "s,obn_pre_staging::username: \".*\",obn_pre_staging::username: \"$uservar\"", ./hieradata/common.yaml
+sed -i "s,obn_pre_staging::password: \".*\",obn_pre_staging::password: \"$passvar\"", ./hieradata/common.yaml
+
+
+
 sudo /opt/puppetlabs/bin/puppet apply --modulepath modules/ manifests/site.pp
