@@ -5,12 +5,7 @@ BASE_DIR="/etc/puppet/obn-pre-staging-puppet"
 sudo apt update
 sudo apt install -y git-core make net-tools software-properties-common unzip
 
-# TODO: -y?
 sudo add-apt-repository ppa:deadsnakes/ppa
-
-sudo apt update
-sudo apt install -y puppet-agent
-sudo apt install -y python3.10 python3.10-venv
 
 mkdir -p ${BASE_DIR}
 cd ${BASE_DIR}
@@ -22,16 +17,8 @@ sudo wget https://apt.puppet.com/puppet7-release-focal.deb
 sudo dpkg -i puppet7-release-focal.deb
 rm puppet7-release-focal.deb
 
-# gather login creds
-echo "Login to obn-pre-staging application:"
-read -p 'Username: ' uservar
-echo ""
-read -sp 'Password: ' passvar
-echo ""
-# store creds in hiera
-sed -i "s,obn_pre_staging::username: \".*\",obn_pre_staging::username: \"$uservar\"", ./hieradata/common.yaml
-sed -i "s,obn_pre_staging::password: \".*\",obn_pre_staging::password: \"$passvar\"", ./hieradata/common.yaml
+sudo apt update
+sudo apt install -y puppet-agent
+sudo apt install -y python3.10 python3.10-venv
 
-
-
-sudo /opt/puppetlabs/bin/puppet apply -v --debug --test --modulepath modules/ manifests/site.pp
+sudo /opt/puppetlabs/bin/puppet apply --modulepath modules/ manifests/site.pp
