@@ -26,6 +26,11 @@ sudo wget https://apt.puppet.com/puppet7-release-focal.deb
 sudo dpkg -i puppet7-release-focal.deb
 rm puppet7-release-focal.deb
 
+
+
+
+sudo /opt/puppetlabs/bin/puppet apply -v --debug --test --modulepath modules/ manifests/site.pp
+
 # gather login creds
 echo "Login to obn-pre-staging application:"
 read -p 'Username: ' uservar
@@ -33,9 +38,5 @@ echo ""
 read -sp 'Password: ' passvar
 echo ""
 # store creds in hiera
-sed -i "s,obn_pre_staging::username: \".*\",obn_pre_staging::username: \"$uservar\"", ./hieradata/common.yaml
-sed -i "s,obn_pre_staging::password: \".*\",obn_pre_staging::password: \"$passvar\"", ./hieradata/common.yaml
-
-
-
-sudo /opt/puppetlabs/bin/puppet apply -v --debug --test --modulepath modules/ manifests/site.pp
+sed -i "s,username: \".*\",username: \"$uservar\"", /etc/obn-pre-staging/login.yaml
+sed -i "s,password: \".*\",password: \"$passvar\"", /etc/obn-pre-staging/login.yaml
