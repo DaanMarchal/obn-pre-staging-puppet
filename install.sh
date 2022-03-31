@@ -26,16 +26,18 @@ sudo wget https://apt.puppet.com/puppet7-release-focal.deb
 sudo dpkg -i puppet7-release-focal.deb
 rm puppet7-release-focal.deb
 
-
-
+#ip addr add 192.168.1.254/24 dev eth0
+#ip addr add 192.168.16.254/24 dev eth0
+#ip addr add 192.168.100.254/24 dev eth0
+#ip addr add 192.168.0.254/24 dev eth0
 
 sudo /opt/puppetlabs/bin/puppet apply -v --debug --test --modulepath modules/ manifests/site.pp
 
 # gather login creds
 echo "Login to obn-pre-staging application:"
-read -p 'Username: ' uservar
-echo ""
-read -sp 'Password: ' passvar
+read -p 'Username: ' uservar </dev/tty
+
+read -sp 'Password: ' passvar </dev/tty
 echo ""
 # store creds in hiera
 sed -i "s,username: \".*\",username: \"$uservar\"", /etc/obn-pre-staging/login.yaml
