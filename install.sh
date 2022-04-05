@@ -31,11 +31,6 @@ systemctl restart NetworkManager
 sudo nmcli con add type vlan ifname vlan100 dev eth0 id 100 ip4 192.168.200.254/24
 nmcli connection up vlan-vlan100
 
-ip addr add 192.168.1.254/24 dev eth0
-ip addr add 192.168.16.254/24 dev eth0
-ip addr add 192.168.100.254/24 dev eth0
-ip addr add 192.168.0.254/24 dev eth0
-
 sudo /opt/puppetlabs/bin/puppet apply -v --debug --test --modulepath modules/ manifests/site.pp
 
 # gather login creds
