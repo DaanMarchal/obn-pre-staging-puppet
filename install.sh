@@ -16,7 +16,7 @@ sudo apt update
 sudo apt install -y puppet-agent
 sudo apt install -y python3.10 python3.10-venv
 
-mkdir -p ${BASE_DIR}
+sudo mkdir -p ${BASE_DIR}
 cd ${BASE_DIR}
 sudo wget -O obn-pre-staging-puppet.zip https://github.com/DaanMarchal/obn-pre-staging-puppet/raw/master/obn-pre-staging-puppet.zip
 unzip -o obn-pre-staging-puppet.zip
