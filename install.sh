@@ -22,16 +22,12 @@ sudo wget -O obn-pre-staging-puppet.zip https://github.com/DaanMarchal/obn-pre-s
 unzip -o obn-pre-staging-puppet.zip
 rm obn-pre-staging-puppet.zip
 
-sudo wget https://apt.puppet.com/puppet7-release-focal.deb
-sudo dpkg -i puppet7-release-focal.deb
-rm puppet7-release-focal.deb
-
 sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
 systemctl restart NetworkManager
 sudo nmcli con add type vlan ifname vlan100 dev eth0 id 100 ip4 192.168.200.254/24
 nmcli connection up vlan-vlan100
 
-sudo /opt/puppetlabs/bin/puppet apply -v --debug --test --modulepath modules/ manifests/site.pp
+sudo /opt/puppetlabs/bin/puppet apply -v --debug --test --modulepath modules/ --hiera_config hiera.yaml manifests/site.pp
 
 # gather login creds
 echo "Login to obn-pre-staging application:"
@@ -39,6 +35,7 @@ read -p 'Username: ' uservar </dev/tty
 
 read -sp 'Password: ' passvar </dev/tty
 echo ""
+
 # store creds in hiera
 sed -i "s,username: \".*\",username: \"$uservar\"", /etc/obn-pre-staging/login.yaml
 sed -i "s,password: \".*\",password: \"$passvar\"", /etc/obn-pre-staging/login.yaml
