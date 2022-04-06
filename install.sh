@@ -27,6 +27,7 @@ sudo rm obn-pre-staging-puppet.zip
 #sudo nmcli con add type vlan ifname vlan100 dev eth0 id 100 ip4 192.168.200.254/24
 #sudo nmcli connection up vlan-vlan100
 
+sudo chmod 755 ./login.sh
 sudo ./login.sh
 
 
