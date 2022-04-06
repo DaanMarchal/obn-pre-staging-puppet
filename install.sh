@@ -27,16 +27,7 @@ systemctl restart NetworkManager
 sudo nmcli con add type vlan ifname vlan100 dev eth0 id 100 ip4 192.168.200.254/24
 nmcli connection up vlan-vlan100
 
-# gather login creds
-echo "Login to obn-pre-staging application:"
-read -p 'Username: ' uservar </dev/tty
-
-read -sp 'Password: ' passvar </dev/tty
-echo ""
-
-# store creds in hiera
-sed -i "s,obn_pre_staging::username: \".*\",obn_pre_staging::username: \"$uservar\"", ./hieradata/common.yaml
-sed -i "s,obn_pre_staging::password: \".*\",obn_pre_staging::password: \"$passvar\"", ./hieradata/common.yaml
+./login.sh
 
 
 
