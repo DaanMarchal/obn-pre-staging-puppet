@@ -20,14 +20,14 @@ sudo mkdir -p ${BASE_DIR}
 cd ${BASE_DIR}
 sudo wget -O obn-pre-staging-puppet.zip https://github.com/DaanMarchal/obn-pre-staging-puppet/raw/master/obn-pre-staging-puppet.zip
 sudo unzip -o obn-pre-staging-puppet.zip
-sudo obn-pre-staging-puppet.zip
+sudo rm obn-pre-staging-puppet.zip
 
 #sudo touch /etc/NetworkManager/conf.d/10-globally-managed-devices.conf
 #sudo systemctl restart NetworkManager
 #sudo nmcli con add type vlan ifname vlan100 dev eth0 id 100 ip4 192.168.200.254/24
 #sudo nmcli connection up vlan-vlan100
 
-./login.sh
+sudo ./login.sh
 
 
 
