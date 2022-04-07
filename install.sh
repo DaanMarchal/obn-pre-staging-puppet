@@ -25,4 +25,4 @@ sudo rm obn-pre-staging-puppet.zip
 sudo chmod 755 ./login.sh
 sudo ./login.sh
 
-sudo /opt/puppetlabs/bin/puppet apply -v --debug --test --modulepath modules/ --hiera_config hiera.yaml manifests/site.pp
+sudo /opt/puppetlabs/bin/puppet apply -v --test --modulepath modules/ --hiera_config hiera.yaml manifests/site.pp
