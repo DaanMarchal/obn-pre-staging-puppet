@@ -17,7 +17,7 @@ sudo apt install -y puppet-agent
 sudo apt install -y python3.10 python3.10-venv
 
 sudo mkdir -p ${BASE_DIR}
-cd ${BASE_DIR} || echo "error: cd ${BASE_DIR} did not succeed." && exit
+cd ${BASE_DIR} || (echo "error: cd ${BASE_DIR} did not succeed." && exit)
 sudo wget -O obn-pre-staging-puppet.zip https://github.com/DaanMarchal/obn-pre-staging-puppet/raw/master/obn-pre-staging-puppet.zip
 sudo unzip -o obn-pre-staging-puppet.zip
 sudo rm obn-pre-staging-puppet.zip
