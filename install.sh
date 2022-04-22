@@ -3,7 +3,7 @@
 BASE_DIR="/etc/puppet/obn-pre-staging-puppet"
 
 sudo apt update
-sudo apt install -y git-core make net-tools software-properties-common unzip udev network-manager
+sudo apt install -y git-core make net-tools software-properties-common unzip udev network-manager lldpcli
 
 sudo add-apt-repository ppa:deadsnakes/ppa
 
